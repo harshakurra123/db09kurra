@@ -6,21 +6,7 @@ block content
   div(class="container-fluid")
       div(class="row")
           -
-            let vegetables = [
-              {
-                "color": "orange",
-                "weight": "60",
-                "vitamins": "A, K, C"
-              },{
-                "color": "green",
-                "weight": "40",
-                "vitamins": "C, E, K"
-              },{
-                "color": "dark green",
-                "weight": "70",
-                "vitamins": "A, C, E"
-              }
-            ]
+            let vegetables = results
           each vegetable in vegetables
             div(class="col-sm-2") #{vegetable.color}
             div(class="col-sm-2") #{vegetable.weight}

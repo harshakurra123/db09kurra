@@ -30,3 +30,15 @@ res.send('NOT IMPLEMENTED: vegetable delete DELETE ' + req.params.id);
 exports.vegetable_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: vegatable update PUT' + req.params.id);
 };
+
+// VIEWS
+// Handle a show all view
+exports.vegetable_view_all_Page = async function(req, res) {
+    try{
+    theVegetables = await vegetable.find();
+    res.render('vegetable', { title: 'vegatable Search Results', results: theVegetables });
+    }
+    catch(err){
+    res.error(500,`{"error": ${err}}`);
+    }
+    };
