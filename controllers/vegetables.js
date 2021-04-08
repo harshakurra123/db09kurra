@@ -1,8 +1,19 @@
 var vegetable = require('../models/vegetable');
 // List of all vegetables
-exports.vegetable_list = function(req, res) {
-res.send('NOT IMPLEMENTED: vegetable list');
-};
+exports.vegetable_list = async function(req, res) {
+    try{
+    theVegetables = await vegetable.find();
+    res.send(theVegetables);
+    }
+    catch(err){
+    res.error(500,`{"error": ${err}}`);
+    }
+    };
+
+// List of all vegetables
+// exports.vegetable_list = function(req, res) {
+// res.send('NOT IMPLEMENTED: vegetable list');
+// };
 // for a specific vegatable.
 exports.vegetable_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: vegetable detail: ' + req.params.id);
