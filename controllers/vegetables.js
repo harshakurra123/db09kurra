@@ -15,8 +15,15 @@ exports.vegetable_list = async function(req, res) {
 // res.send('NOT IMPLEMENTED: vegetable list');
 // };
 // for a specific vegatable.
-exports.vegetable_detail = function(req, res) {
-res.send('NOT IMPLEMENTED: vegetable detail: ' + req.params.id);
+exports.vegetable_detail = async function(req, res) {
+    console.log("vegetable"  + req.params.id)
+    try {
+        result = await vegetable.findById( req.params.id)
+        res.send(result)
+    }catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 // Handle vegetable create on POST.
 // Handle Costume create on POST.
@@ -43,8 +50,21 @@ exports.vegetable_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: vegetable delete DELETE ' + req.params.id);
 };
 // Handle vegetable update form on PUT.
-exports.vegetable_update_put = function(req, res) {
-res.send('NOT IMPLEMENTED: vegatable update PUT' + req.params.id);
+exports.vegetable_update_put = async function(req, res) {
+    console.log(`update on id ${req.params.id} with body 
+${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await vegetable.findById( req.params.id)
+        if(req.body.color) toUpdate.color = req.body.color;
+        if(req.body.weight) toUpdate.weight = req.body.weight;
+        if(req.body.vitamins) toUpdate.vitamins = req.body.vitamins;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
+    }
 };
 
 // VIEWS
