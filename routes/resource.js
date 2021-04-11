@@ -23,4 +23,6 @@ router.get('/detail', vegetable_controller.vegetable_view_one_Page);
 router.get('/create', vegetable_controller.vegetable_create_Page);
 /* GET create update page */
 router.get('/update', vegetable_controller.vegetable_update_Page);
+/* GET create costume page */
+router.get('/delete', vegetable_controller.vegetable_delete_Page);
 module.exports = router;
