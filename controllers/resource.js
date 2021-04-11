@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 // Require controller modules.
 var api_controller = require('../controllers/api');
-var vegetable_controller = require('../controllers/vegatable');
+var vegetable_controller = require('../controllers/vegetables');
 /// API ROUTE ///
 // GET resources base.
 router.get('/resource', api_controller.api);
@@ -17,6 +17,10 @@ router.put('/resource/vegetable/:id', vegetable_controller.vegetable_update_put)
 router.get('/resource/vegetable/:id', vegetable_controller.vegetable_detail);
 // GET request for list of all vegetable items.
 router.get('/resource/vegetable', vegetable_controller.vegetable_list);
-/* GET detail costume page */
+/* GET detail vegetable page */
 router.get('/detail', vegetable_controller.vegetable_view_one_Page);
+/* GET create costume page */
+router.get('/create', vegetable_controlers.vegetable_create_Page);
+/* GET create update page */
+router.get('/update', vegetable_controller.vegetable_update_Page);
 module.exports = router;

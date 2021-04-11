@@ -85,13 +85,27 @@ exports.vegetable_view_all_Page = async function(req, res) {
     catch(err){
     res.error(500,`{"error": ${err}}`);
     }
-    };
+};
 exports.vegetable_view_one_Page = async function(req, res) {
     console.log("single view for id "  + req.query.id)
     try{
-        result = await vegetable.findById( req.query.id)
+        result = await vegetable.findById(req.query.id)
+        console.log(result)
         res.render('vegetabledetail', 
             { title: 'vegetable Detail', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
+// Handle building the view for creating a costume.
+// No body, no in path parameter, no query.
+// Does not need to be async
+exports.vegetable_create_Page =  async function(req, res) {
+    console.log("create view")
+    try{
+        res.render('vegetablecreate', { title: 'vegetable Create'});
     }
     catch(err){
         res.status(500)

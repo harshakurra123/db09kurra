@@ -17,4 +17,10 @@ router.put('/resource/vegetable/:id', vegetable_controller.vegetable_update_put)
 router.get('/resource/vegetable/:id', vegetable_controller.vegetable_detail);
 // GET request for list of all vegetable items.
 router.get('/resource/vegetable', vegetable_controller.vegetable_list);
+/* GET detail vegetable page */
+router.get('/detail', vegetable_controller.vegetable_view_one_Page);
+/* GET create costume page */
+router.get('/create', vegetable_controller.vegetable_create_Page);
+/* GET create update page */
+router.get('/update', vegetable_controller.vegetable_update_Page);
 module.exports = router;
