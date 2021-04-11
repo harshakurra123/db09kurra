@@ -2,11 +2,28 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+h1 {
+  color: red;
+}
+input{
+  width:100px;
+  height:25px;
+  color:black;
+  background-color:lightcoral;
+}
 a {
   color: #00B7FF;
 }
 .vegetableAttr {
   background-color: aquamarine;
-  width: 120px;
+  width: 150px;
+  height: 50px
+}
+.vegetableValueAttr {
+  background-color: yellow;
+  width: 200px;
+  height: 50px
+}
+.updateId{
+  font-size: 20px;
 }

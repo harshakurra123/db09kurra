@@ -7,7 +7,7 @@ block content
   - let vegetablevitamins = toShow.vitamins
   div.row(class='mb-2')
     div.mr-1 ID is
-    div #{vegetableid}
+    div(class='updateId') #{vegetableid}
   - let actionid = "/resource/resource/vegetable/" + vegetableid
   form(id='vegetableForm', action= actionid, method="PUT")
     div.form-group
