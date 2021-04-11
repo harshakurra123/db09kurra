@@ -46,8 +46,16 @@ exports.vegetable_create_post = async function(req, res) {
     }
     };
 // Handle vegetable delete form on DELETE.
-exports.vegetable_delete = function(req, res) {
-res.send('NOT IMPLEMENTED: vegetable delete DELETE ' + req.params.id);
+exports.vegetable_delete = async function(req, res) {
+    console.log("delete "  + req.params.id)
+    try {
+        result = await vegetable.findByIdAndDelete( req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 // Handle vegetable update form on PUT.
 exports.vegetable_update_put = async function(req, res) {
@@ -78,3 +86,15 @@ exports.vegetable_view_all_Page = async function(req, res) {
     res.error(500,`{"error": ${err}}`);
     }
     };
+exports.vegetable_view_one_Page = async function(req, res) {
+    console.log("single view for id "  + req.query.id)
+    try{
+        result = await vegetable.findById( req.query.id)
+        res.render('vegetabledetail', 
+            { title: 'vegetable Detail', toShow: result });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
