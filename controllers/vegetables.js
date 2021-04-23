@@ -42,7 +42,9 @@ exports.vegetable_create_post = async function(req, res) {
     res.send(result);
     }
     catch(err){
-    res.error(500,`{"error": ${err}}`);
+        console.log(err)
+    res.send(err);
+    res.status(500);
     }
     };
 // Handle vegetable delete form on DELETE.
@@ -80,7 +82,8 @@ ${JSON.stringify(req.body)}`)
 exports.vegetable_view_all_Page = async function(req, res) {
     try{
     theVegetables = await vegetable.find();
-    res.render('vegetable', { title: 'vegatable Search Results', results: theVegetables });
+    console.log(theVegetables)
+    res.render('vegetable', { title: 'vegetable Search Results', results: theVegetables });
     }
     catch(err){
     res.error(500,`{"error": ${err}}`);

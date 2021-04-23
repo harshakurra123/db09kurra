@@ -3,11 +3,18 @@ extends layout
 block content
   h1= title
   div(class="container-fluid")
+  - let create = `dispatch(\"/resource/create")`
+    button.btn( class="btn-primary ml-1", onclick= create) Create
   div(class="row m-1")
   each result in results
     - let destination = `dispatch(\"/resource/update?id=${result._id}\")`
+    - let destination1 = `dispatch(\"/resource/delete?id=${result._id}\")`
+    - let destination2 = `dispatch(\"/resource/detail?id=${result._id}\")`
     div(class="row-sm-2", class="m-1") Item #{result.color}(#{result.weight}) is #{result.vitamins}
     button.btn( class="btn-primary ml-1", onclick= destination) Update
+    button.btn( class="btn-primary ml-1", onclick= destination1) Delete
+    button.btn( class="btn-primary ml-1", onclick= destination2) detail
+
 
   script.
     function dispatch(path){

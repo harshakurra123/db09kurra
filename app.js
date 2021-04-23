@@ -85,7 +85,7 @@ app.use(function(err, req, res, next) {
 // We can seed the collection if needed on server start
 async function recreateDB(){
   // Delete everything
-  // await vegetable.deleteMany();
+  await vegetable.deleteMany();
   let instance1 = new vegetable({color:"orange", weight:"60",
   vitamins:"A,K,C"});
   instance1.save( function(err,doc) {
